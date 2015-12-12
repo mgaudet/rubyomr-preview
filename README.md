@@ -1,14 +1,52 @@
 # Introducing the "Ruby + OMR Technology Preview"
 
-The OMR team has put this technology preview together to showcase how OMR runtime technology might be integrated into the Ruby VM.
+The OMR team has put this technology preview together to showcase how OMR
+runtime technology might be integrated into the Ruby VM.
+
+# Why this preview? 
 We are releasing this technology preview for a couple of reasons:
 
 1. So that people can try out the OMR technology in Ruby
 2. To get feedback on how OMR technology has been integrated into Ruby
 
-Our sincerest hope is that this preview helps us to work with the existing Ruby community to integrate
-those parts of OMR that the Ruby community finds beneficial. But first, you may be wondering…
+Our sincerest hope is that this preview helps us to work with the existing Ruby
+community to integrate those parts of OMR that the Ruby community finds
+beneficial.
 
+# Quick Start Guide
+
+The following files are in this project:
+
+* This README.md file
+* A LICENSE directory describing in excruciating detail just how little you can
+  rely on in this technology preview
+
+We have also written up a User's Guide which you can find in our wiki
+
+To start using the Ruby+OMR Technology Preview:
+
+1. Follow the instructions [here](http://docs.docker.com/engine/installation/)
+   if you do not already have docker installed:
+    
+
+2. Pull the rubyomrpreview image from DockerHub with the command:
+
+        $ docker pull rubyomrpreview/rubyomrpreview
+
+3. Run the docker image (you can omit the -p 1883:1883 if you won't be using Health Centre):
+
+        $ docker run -p 1883:1883 -it rubyomrpreview/rubyomrpreview /bin/bash
+
+4. Verify you can run Ruby+OMR Technology Preview:
+
+        $ ruby --version
+        ruby 2.2.3p97 (OMR Preview r1)(2015-04-14) [x86_64-linux]
+
+5. Play to your heart's content!
+
+To see how to use the various OMR technologies, please look for Tracing,
+Garbage Collector, and Just In Time (JIT) compiler sections in the User’s
+Guide!
 
 # What is “OMR” ?
 
@@ -99,48 +137,15 @@ o include the OMR source code along with more of the glue code that connects the
 Not all of the OMR technologies are active by default in this version of Ruby.  Environment variables
 activate those technologies that are not on by default, like the method profiling support when you
 connect to ruby with IBM Health Center (also included in the docker image: see the User's Guide!) or to
-turn the JIT compiler on. For example, to activate the JIT compiler technology, you'll need to set
+turn the JIT compiler on.
+
+For example, to activate the JIT compiler technology, you'll need to set
 `OMR_JIT_OPTIONS="-Xjit"` which turns on the JIT where it will compile methods that are invoked more than
 1000 times. `OMR_JIT_OPTIONS="-Xjit:count=N"` adjusts the invocation count before JIT compilation so that
 you can play around a bit.
 
 For full details on how to activate each OMR component and the various configuration options available
 in this technology preview, please see the User's Guide at our [github project](https://github.com/rubyomr-preview/rubyomr-preview)
-
-# Quick Start Guide
-
-The following files are in this project:
-
-* This README.md file
-* A LICENSE directory describing in excruciating detail just how little you can
-  rely on in this technology preview
-
-We have also written up a User's Guide which you can find in our wiki
-
-To start using the Ruby+OMR Technology Preview:
-
-1. Follow the instructions [here](http://docs.docker.com/engine/installation/)
-   if you do not already have docker installed:
-    
-
-2. Pull the rubyomrpreview image from DockerHub with the command:
-
-        $ docker pull rubyomrpreview/rubyomrpreview
-
-3. Run the docker image (you can omit the -p 1883:1883 if you won't be using Health Centre):
-
-        $ docker run -p 1883:1883 -it rubyomrpreview/rubyomrpreview /bin/bash
-
-4. Verify you can run Ruby+OMR Technology Preview:
-
-        $ ruby --version
-        ruby 2.2.3p97 (OMR Preview r1)(2015-04-14) [x86_64-linux]
-
-5. Play to your heart's content!
-
-To see how to use the various OMR technologies, please look for Tracing,
-Garbage Collector, and Just In Time (JIT) compiler sections in the User’s
-Guide!
 
 # We would love to hear your feedback!
 
